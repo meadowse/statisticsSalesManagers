@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r4hqaf3d1ne3%oxuho1yd%4c*mhh3!prz6(mpy4y#k3*)jy!t1'
+try:
+    SECRET_KEY = os.environ["SECRET_KEY"]
+except KeyError as e:
+    raise RuntimeError("Could not find a SECRET_KEY in environment") from e
 
+# Debug оставляю, т.к. приложение будет работать внутри корпоративной сети
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -71,7 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'statisticsSalesManagersBack.wsgi.application'
 
-
+# Базу не меняю, т.к. будем подключаться к корпоративной сети
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
