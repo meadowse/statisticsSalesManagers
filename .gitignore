@@ -2,8 +2,10 @@
 .idea
 __pycache__
 .venv
-.DJANGO_SECRET_KEY
+DJANGO_SECRET_KEY.py
 db.sqlite3
 nohup.out
 
 # Разрешенные для размещения в репозитор файлы
+!.gitignore
+!.dockerignore
