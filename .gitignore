@@ -7,5 +7,3 @@ db.sqlite3
 nohup.out
 
 # Разрешенные для размещения в репозитор файлы
-!.gitignore
-!.dockerignore
