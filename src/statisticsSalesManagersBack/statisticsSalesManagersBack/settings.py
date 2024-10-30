@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashBoard.apps.DashboardConfig',
+    'getKNData.apps.GetkndataConfig',
 ]
 
 MIDDLEWARE = [
