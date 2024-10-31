@@ -5,5 +5,8 @@ __pycache__
 DJANGO_SECRET_KEY.py
 db.sqlite3
 nohup.out
+build
+node_modules
+.vscode
 
 # Разрешенные для размещения в репозитор файлы

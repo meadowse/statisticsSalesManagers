@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashBoard.apps.DashboardConfig',
     'getKNData.apps.GetkndataConfig',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'statisticsSalesManagersBack.urls'
@@ -128,3 +130,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Add to project/settings.py
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
+# CORS SETTINGS
+CORS_ALLOW_ALL_ORIGINS = False  # Разрешить все источники или нет
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',    # Добавьте разрешенные источники
+]

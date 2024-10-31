@@ -1,0 +1,14 @@
+services:
+  statisticssalesmanagersback:
+    image: statisticssalesmanagersback
+    build: "./src/statisticsSalesManagersBack"
+    ports:
+      - 8000:8000
+  salesplan:
+    image: salesplan
+    build: "./src/statisticsSalesManagersFront"
+    ports:
+      - 3000:3000
+    # environment:
+      # BACK_URL: http://statisticssalesmanagersback
+      # BACK_PORT: 8000
