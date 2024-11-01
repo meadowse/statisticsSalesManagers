@@ -135,4 +135,6 @@ SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 CORS_ALLOW_ALL_ORIGINS = False  # Разрешить все источники или нет
 CORS_ALLOWED_ORIGINS = [
     'http://localhost',    # Добавьте разрешенные источники
+    'http://10.199.1.11',
+    # 'http://10.199.2.144',
 ]
