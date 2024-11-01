@@ -3,12 +3,12 @@
 
 Сборка/Пересборка
 
-### 'docker-compose build'
+### `docker-compose build`
 
 Запуск
 
-### 'docker-compose up'
+### `docker-compose up`
 
 Отключение
 
-### 'docker-compose down'
+### `docker-compose down`
