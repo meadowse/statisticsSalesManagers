@@ -26,7 +26,7 @@ from .DJANGO_SECRET_KEY import SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['statisticssalesmanagersback']
 
 
 # Application definition
@@ -134,5 +134,5 @@ SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 # CORS SETTINGS
 CORS_ALLOW_ALL_ORIGINS = False  # Разрешить все источники или нет
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',    # Добавьте разрешенные источники
+    'http://localhost',    # Добавьте разрешенные источники
 ]
