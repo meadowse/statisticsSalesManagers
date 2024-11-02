@@ -299,8 +299,8 @@ function App() {
             const month = newDate.getMonth() + 1;
             const year = newDate.getFullYear();
 
-            const pathSales = `http://localhost/successManagers?month=${month}&year=${year}`;
-            const pathOther = `http://localhost/successManagers/other?month=${month}&year=${year}`;
+            const pathSales = `http://10.199.254.28:8888/successManagers?month=${month}&year=${year}`;
+            const pathOther = `http://10.199.254.28:8888/successManagers/other?month=${month}&year=${year}`;
 
             console.log(`in interval path: ${pathSales}`);
 
@@ -322,8 +322,8 @@ function App() {
         const month = newDate.getMonth() + 1;
         const year = newDate.getFullYear();
 
-        const pathSales = `http://localhost/successManagers?month=${month}&year=${year}`;
-        const pathOther = `http://localhost/successManagers/other?month=${month}&year=${year}`;
+        const pathSales = `http://10.199.254.28:8888/successManagers?month=${month}&year=${year}`;
+        const pathOther = `http://10.199.254.28:8888/successManagers/other?month=${month}&year=${year}`;
 
         // console.log(`path: ${path}`);
 

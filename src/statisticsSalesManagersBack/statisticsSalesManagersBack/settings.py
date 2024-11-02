@@ -24,9 +24,9 @@ from .DJANGO_SECRET_KEY import SECRET_KEY
 
 # Debug оставляю, т.к. приложение будет работать внутри корпоративной сети
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['statisticssalesmanagersback']
+ALLOWED_HOSTS = ['statisticssalesmanagersback', '10.199.254.28', ]
 
 
 # Application definition
@@ -136,5 +136,9 @@ CORS_ALLOW_ALL_ORIGINS = False  # Разрешить все источники �
 CORS_ALLOWED_ORIGINS = [
     'http://localhost',    # Добавьте разрешенные источники
     'http://10.199.1.11',
-    # 'http://10.199.2.144',
+    'http://10.199.254.28',
+    'http://10.199.254.28:8000',
+    'http://192.168.199.208',
 ]
+
+
