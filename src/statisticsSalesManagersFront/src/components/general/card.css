@@ -1,0 +1,33 @@
+.card {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    /* border: 1px solid #d9d9d9; */
+    border-radius: 10px;
+    font-family: 'Montserrat-SemiBold';
+    font-size: calc(14px + 6 * (100vw - 320px) / 1600);
+    color: #000;
+}
+
+.card__main-title {
+    font-family: 'Montserrat-SemiBold';
+    font-size: calc(16px + 9 * (100vw - 320px) / 1600);
+    color: #000;
+}
+
+.card__list {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'Montserrat-Regular';
+}
+
+.card__list > *:not(:last-child)::after {
+    content: '/';
+    padding: 0 10px;
+}
+
+.card__bottom {
+    display: flex;
+    justify-content: space-between;
+}

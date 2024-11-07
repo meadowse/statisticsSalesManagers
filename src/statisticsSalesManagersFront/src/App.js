@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import CalendarWindow from '@components/CalendarWindow';
 
+// Импорт компонентов
+import CalendarWindow from '@components/CalendarWindow';
+import ProjectManagersPage from './pages/ProjectManagersPage';
+
+// Импорт доп.функционала
 import { MONTHS } from '@helpers/calendar';
 import { numberWithSpaces, between, dataLoader } from '@helpers/helper';
 import SalesService from '@services/sales.service';
 
 import rating from '@data/rating.json';
 
+// Импорт стилей
 import './App.css';
 import 'react-calendar/dist/Calendar.css';
 
@@ -85,6 +90,21 @@ function Header({ date, setDate }) {
                 </ul>
             </div>
         </header>
+    );
+}
+
+function SidePanel({ data }) {
+    return (
+        <div className="side-panel">
+            <h2 className="side-panel__title">Входящие</h2>
+            <ul className="side-panel__list">
+                <li className="side-panel__list-item">Обследование аварийного здания</li>
+                <li className="side-panel__list-item">Легализация самостроя на</li>
+                <li className="side-panel__list-item">Обследование аварийного здания</li>
+                <li className="side-panel__list-item">Легализация самостроя на</li>
+                <li className="side-panel__list-item">Обследование аварийного здания</li>
+            </ul>
+        </div>
     );
 }
 
@@ -333,8 +353,14 @@ function App() {
 
     return (
         <div className="app">
-            <Header date={date} setDate={setDate} setSales={setSales} />
-            <SalesPlan sales={sales} otherData={otherData} />
+            <section className="section__sales-plan section">
+                <div className="section__sales-plan-content">
+                    <Header date={date} setDate={setDate} setSales={setSales} />
+                    <SalesPlan sales={sales} otherData={otherData} />
+                </div>
+                <SidePanel />
+                {/* <ProjectManagersPage /> */}
+            </section>
         </div>
     );
 }

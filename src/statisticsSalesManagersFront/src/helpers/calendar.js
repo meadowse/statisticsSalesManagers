@@ -33,3 +33,7 @@ export function getDateFromString(date) {
     let parts = date.split('.');
     return new Date(Number('20' + parts[2]), Number(parts[1] - 1), Number(parts[0]));
 }
+
+export function getDateDiff(firstDate, secondDate) {
+    return Math.round((secondDate - firstDate) / (1000 * 60 * 60 * 24));
+}

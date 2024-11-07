@@ -8,5 +8,5 @@ nohup.out
 build
 node_modules
 .vscode
-
+prettierrc.json
 # Разрешенные для размещения в репозитор файлы
