@@ -1,12 +1,10 @@
 .section__project-managers {
     padding: 40px;
-    width: 100%;
-    height: 100%;
 }
 
 .kanban {
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
     position: relative;
     overflow-x: auto;
     scrollbar-width: none;
@@ -52,6 +50,8 @@
 }
 
 .kanban__column-header-subtitle {
+    display: flex;
+    column-gap: 0.625rem;
     font-size: calc(14px + 6 * (100vw - 320px) / 1600);
     color: #000;
 }

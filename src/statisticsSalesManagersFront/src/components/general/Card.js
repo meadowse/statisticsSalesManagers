@@ -1,5 +1,6 @@
 // Импорт доп.функционала
 import { getDateFromString, getDateDiff } from '@helpers/calendar';
+import { numberWithSpaces } from '@helpers/helper';
 
 // Импорт стилей
 import './card.css';
@@ -22,16 +23,34 @@ export default function Card({ cardData }) {
     }
 
     return (
-        <li className="card" style={{ border: `1px solid ${getPriorityTask(dateDiff)}` }}>
-            <h2 className="card__main-title">{cardData?.address}</h2>
+        <li
+            key={cardData?.contract_id}
+            className="card"
+            style={{ border: `1px solid ${cardData?.time_val ? getPriorityTask(dateDiff) : '#d9d9d9'}` }}
+        >
+            <h2 className="card__main-title">
+                {cardData?.adress ? <span>{cardData?.adress}</span> : String.fromCharCode(8212)}
+            </h2>
             <ul className="card__list">
                 {cardData?.info && cardData?.info.length !== 0
-                    ? cardData?.info.map(item => <li className="card__list-item">{item}</li>)
+                    ? cardData?.info.map(item => (item ? <li className="card__list-item">{item}</li> : null))
                     : null}
             </ul>
             <div className="card__bottom">
-                <h3>{cardData?.price}</h3>
-                <p>{cardData?.date}</p>
+                <h3 className="card__bottom-title">
+                    {cardData?.price ? (
+                        <span>{numberWithSpaces(cardData?.price)}&nbsp;&#8381;</span>
+                    ) : (
+                        String.fromCharCode(8212)
+                    )}
+                    <span>/</span>
+                    {cardData?.rest ? (
+                        <span>{numberWithSpaces(cardData?.rest)}&nbsp;&#8381;</span>
+                    ) : (
+                        String.fromCharCode(8212)
+                    )}
+                </h3>
+                <p className="card__bottom-subtitle">{cardData?.date || String.fromCharCode(8212)}</p>
             </div>
         </li>
     );

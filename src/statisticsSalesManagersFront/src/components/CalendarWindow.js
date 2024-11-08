@@ -8,15 +8,13 @@ export default function CalendarWindow(props) {
     }
 
     return stateCalendar ? (
-        <div className="calendar_window">
-            <div className="calendar_header">
-                <button className="btn_close_calendar" onClick={onClickCloseWindow}>
+        <div className="calendar__window">
+            <div className="calendar__header">
+                <button className="btn__close-calendar" onClick={onClickCloseWindow}>
                     <img src="/img/cancel_bl.svg" alt="" />
                 </button>
             </div>
-            <div className="calendar_content">
-                <Calendar value={date} onChange={setDate} />
-            </div>
+            <Calendar value={date} onChange={setDate} />
         </div>
     ) : null;
 }
