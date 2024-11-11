@@ -22,4 +22,5 @@ from .views import *  # смотрим по разным классам в
 urlpatterns = [
     path('', successManagers, name='successManagers'),
     path('/other', successOther, name='successOther'),
+    path('/projectManagers', projectManagers, name='projectManagers'),
 ]

@@ -2,8 +2,8 @@ services:
   statisticssalesmanagersback:
     image: statisticssalesmanagersback
     build: "./src/statisticsSalesManagersBack"
-    ports: 
-      - 8888:8000
+    # ports: 
+    #   - 8888:8000
   salesplan:
     image: salesplan
     build: "./src/statisticsSalesManagersFront"
