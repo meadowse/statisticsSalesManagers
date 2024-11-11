@@ -290,69 +290,6 @@ function SalesPlan({ sales, otherData }) {
             )}
         </div>
     );
-
-    // return (
-    //     <main className="main">
-    //         <div className="wrapper">
-    //             <div className="main_content">
-    //                 {generalData && generalData.length !== 0 ? (
-    //                     <table className="sales_table">
-    //                         <thead className="sales_thead">
-    //                             <tr>
-    //                                 <th align="left" className="total_title">
-    //                                     Общий
-    //                                 </th>
-    //                                 <th className="curr_total_cell">
-    //                                     <th className="curr_total_sales">
-    //                                         {/* {numberWithSpaces(currTotalSales)}&nbsp;&#8381; */}
-    //                                         {numberWithSpaces(CURR_TOTAL_SALES_MAP.getByManagers(sales))}&nbsp;&#8381;
-    //                                     </th>
-    //                                     <th className="curr_total_progress">
-    //                                         <th style={STYLES_GENERAL_SALES_MAP.getByManagers(sales)}>&shy;</th>
-    //                                         <th className={classNames('separator', '_50')}></th>
-    //                                         <th className={classNames('separator', '_90')}></th>
-    //                                     </th>
-    //                                 </th>
-    //                                 <th className="total_sales">
-    //                                     {numberWithSpaces(TOTAL_SALES_MAP.getByManagers(sales))}&nbsp;&#8381;
-    //                                 </th>
-    //                             </tr>
-    //                         </thead>
-    //                         <tbody className="sales_tbody">
-    //                             {sales.map((item, indItem) => (
-    //                                 <SalesRowData indItem={indItem} item={item} />
-    //                             ))}
-    //                             <tr className="hr_line"></tr>
-    //                             <tr>
-    //                                 <th align="left" className="total_title">
-    //                                     Общий
-    //                                 </th>
-    //                                 <th className="curr_total_cell">
-    //                                     <th className="curr_total_sales">
-    //                                         {numberWithSpaces(CURR_TOTAL_SALES_MAP.getByOther(otherData))}&nbsp;&#8381;
-    //                                     </th>
-    //                                     <th className="curr_total_progress">
-    //                                         <th style={STYLES_GENERAL_SALES_MAP.getByOther(otherData)}>&shy;</th>
-    //                                         <th className={classNames('separator', '_50')}></th>
-    //                                         <th className={classNames('separator', '_90')}></th>
-    //                                     </th>
-    //                                 </th>
-    //                                 <th className="total_sales">
-    //                                     {numberWithSpaces(TOTAL_SALES_MAP.getByOther(otherData))}&nbsp;&#8381;
-    //                                 </th>
-    //                             </tr>
-    //                             {otherData.map((item, indItem) => (
-    //                                 <SalesRowData indItem={indItem} item={item} />
-    //                             ))}
-    //                         </tbody>
-    //                     </table>
-    //                 ) : (
-    //                     <p className="error_msg">Данные отсутствуют!</p>
-    //                 )}
-    //             </div>
-    //         </div>
-    //     </main>
-    // );
 }
 
 export default function SalesPlanPage() {
@@ -395,71 +332,78 @@ export default function SalesPlanPage() {
                 setOtherData(data);
                 console.log(`data: ${JSON.stringify(data, null, 4)}`);
             });
+        },
+        get_incoming_data: async path => {
+            await dataLoader(path).then(response => {
+                let data = [];
+                const managers = Array.from(new Set(response.map(item => item?.PRM)));
+
+                managers.map(manager => {
+                    if (!manager) {
+                        data = response
+                            .filter(item => manager === item?.PRM)
+                            .map(task => {
+                                return {
+                                    contract_id: task?.CONTRACT_ID,
+                                    adress: task?.ADRESS,
+                                    direction: task?.DIRECTION,
+                                    date: task?.DATE_OF_ENDING,
+                                    time_val: true
+                                };
+                            });
+                    }
+                });
+
+                setIncoming(data);
+            });
         }
     };
 
-    // useEffect(() => {
-    //     // localStorage.setItem('date', new Date().toString());
+    useEffect(() => {
+        // localStorage.setItem('date', new Date().toString());
 
-    //     let interval = setInterval(async () => {
-    //         const newDate = localStorage.getItem('date') ? new Date(localStorage.getItem('date')) : Date();
-    //         console.log(`in interval newDate: ${newDate}`);
+        let interval = setInterval(async () => {
+            const newDate = localStorage.getItem('date') ? new Date(localStorage.getItem('date')) : Date();
+            console.log(`in interval newDate: ${newDate}`);
 
-    //         const month = newDate.getMonth() + 1;
-    //         const year = newDate.getFullYear();
+            const month = newDate.getMonth() + 1;
+            const year = newDate.getFullYear();
 
-    //         const pathSales = `http://10.199.254.28:8888/successManagers?month=${month}&year=${year}`;
-    //         const pathOther = `http://10.199.254.28:8888/successManagers/other?month=${month}&year=${year}`;
+            const pathSales = `http://10.199.2.144:8000/successManagers?month=${month}&year=${year}`;
+            const pathOther = `http://10.199.2.144:8000/successManagers/other?month=${month}&year=${year}`;
 
-    //         console.log(`in interval path: ${pathSales}`);
+            console.log(`in interval path: ${pathSales}`);
 
-    //         REQUESTS_MAP.get_sales_data(pathSales);
-    //         REQUESTS_MAP.get_other_data(pathOther);
-    //     }, 5 * 60 * 1000);
+            REQUESTS_MAP.get_sales_data(pathSales);
+            REQUESTS_MAP.get_other_data(pathOther);
+        }, 5 * 60 * 1000);
 
-    //     return () => {
-    //         clearInterval(interval);
-    //     };
-    // }, []);
-
-    // useEffect(() => {
-    //     const newDate = localStorage.getItem('date') ? new Date(localStorage.getItem('date')) : new Date();
-    //     console.log(`newDate: ${newDate}`);
-
-    //     localStorage.setItem('date', newDate.toString());
-
-    //     const month = newDate.getMonth() + 1;
-    //     const year = newDate.getFullYear();
-
-    //     const pathSales = `http://10.199.254.28:8888/successManagers?month=${month}&year=${year}`;
-    //     const pathOther = `http://10.199.254.28:8888/successManagers/other?month=${month}&year=${year}`;
-
-    //     // console.log(`path: ${path}`);
-
-    //     REQUESTS_MAP.get_sales_data(pathSales);
-    //     REQUESTS_MAP.get_other_data(pathOther);
-    // }, [localStorage.getItem('date')]);
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     useEffect(() => {
-        let data = [];
-        const managers = Array.from(new Set(TASKS_DATA.map(item => item?.PRM)));
+        const newDate = localStorage.getItem('date') ? new Date(localStorage.getItem('date')) : new Date();
+        console.log(`newDate: ${newDate}`);
 
-        managers.map(manager => {
-            if (!manager) {
-                data = TASKS_DATA.filter(item => manager === item?.PRM).map(task => {
-                    return {
-                        contract_id: task?.CONTRACT_ID,
-                        adress: task?.ADRESS,
-                        direction: task?.DIRECTION,
-                        date: task?.DATE_OF_ENDING,
-                        time_val: true
-                    };
-                });
-            }
-        });
+        localStorage.setItem('date', newDate.toString());
 
-        setIncoming(data);
-        console.log(`managers:${JSON.stringify(managers, null, 4)}\ndata: ${JSON.stringify(data, null, 4)}`);
+        const month = newDate.getMonth() + 1;
+        const year = newDate.getFullYear();
+
+        const pathSales = `http://10.199.2.144:8000/successManagers?month=${month}&year=${year}`;
+        const pathOther = `http://10.199.2.144:8000/successManagers/other?month=${month}&year=${year}`;
+
+        // console.log(`path: ${path}`);
+
+        REQUESTS_MAP.get_sales_data(pathSales);
+        REQUESTS_MAP.get_other_data(pathOther);
+    }, [localStorage.getItem('date')]);
+
+    useEffect(() => {
+        const pathProjManagers = `http://10.199.2.144:8000/successManagers/projectManagers`;
+        REQUESTS_MAP.get_incoming_data(pathProjManagers);
     }, []);
 
     return (

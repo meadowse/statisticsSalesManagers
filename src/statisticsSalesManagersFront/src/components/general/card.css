@@ -53,6 +53,14 @@
     column-gap: 10px;
 }
 
+.card__bottom-price {
+    color: #47a76a;
+}
+
+.card__bottom-rest {
+    color: #d71920;
+}
+
 .card__bottom-subtitle {
     margin-left: auto;
 }

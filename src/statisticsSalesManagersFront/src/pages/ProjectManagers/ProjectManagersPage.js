@@ -5,7 +5,7 @@ import Card from '@components/general/Card';
 
 // Импорт доп.функционала
 import { getDateFromString } from '@helpers/calendar';
-import { numberWithSpaces } from '@helpers/helper';
+import { dataLoader, numberWithSpaces } from '@helpers/helper';
 
 // Импорт стилей
 import './project_managers_page.css';
@@ -55,24 +55,33 @@ export default function ProjectManagersPage() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        setTasks(convertData(TASKS_DATA));
-
-        console.log(`tasks: ${JSON.stringify(convertData(TASKS_DATA), null, 4)}`);
+        async function fetchData() {
+            const pathProjManagers = `http://10.199.2.144:8000/successManagers/projectManagers`;
+            await dataLoader(pathProjManagers).then(response => {
+                setTasks(convertData(Array.from(response)));
+            });
+        }
+        fetchData();
     }, []);
 
     return (
         <section className="section__project-managers section">
             <div className="kanban">
-                <div className="kanban__wrapper">
+                <div className="kanban__wrapper" style={{ gridTemplateColumns: `repeat(${tasks.length}, 1fr)` }}>
                     {tasks.map((task, indexTask) => (
                         <div key={indexTask} className="kanban__column">
                             <div className="kanban__column-header">
                                 <div className="kanban__column-header-inner">
                                     <h2 className="kanban__column-header-title">{task?.manager}</h2>
                                     <p className="kanban__column-header-subtitle">
-                                        <span>{numberWithSpaces(task?.price)}&nbsp;&#8381;</span>/
-                                        <span>{numberWithSpaces(task?.rest)}&nbsp;&#8381;</span>/
-                                        <span>{task?.count}</span>
+                                        <span className="kanban__column-header-price">
+                                            {numberWithSpaces(task?.price)}&nbsp;&#8381;
+                                        </span>
+                                        /
+                                        <span className="kanban__column-header-rest">
+                                            {numberWithSpaces(task?.rest)}&nbsp;&#8381;
+                                        </span>
+                                        /<span>{task?.count}</span>
                                     </p>
                                 </div>
                             </div>
