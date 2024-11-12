@@ -51,9 +51,14 @@
 
 .kanban__column-header-subtitle {
     display: flex;
-    column-gap: 0.625rem;
+    flex-wrap: wrap;
+    gap: 0.625rem;
     font-size: calc(14px + 6 * (100vw - 320px) / 1600);
     color: #000;
+}
+
+.kanban__column-header-count {
+    margin-left: auto;
 }
 
 .kanban__column-header-price {

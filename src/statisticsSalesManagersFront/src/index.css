@@ -9,7 +9,7 @@ body {
 
 body {
     font-family: 'Montserrat-Regular';
-    font-size: calc(12px + 14 * (100vw - 320px) / 1600);
+    font-size: calc(12px + 18 * (100vw - 320px) / 1600);
     color: #666666;
 }
 

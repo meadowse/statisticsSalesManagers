@@ -1,29 +1,19 @@
 .card {
-    padding: 1.5625rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     row-gap: 1.5625rem;
     border-radius: 0.625rem;
     font-family: 'Montserrat-SemiBold';
     font-size: calc(14px + 6 * (100vw - 320px) / 1600);
-    text-wrap: balance;
     color: #000;
 }
 
 .card__main-title {
-    width: 100%;
-    white-space: nowrap;
-    overflow-x: hidden;
+    word-wrap: break-word;
     font-family: 'Montserrat-SemiBold';
     font-size: calc(16px + 9 * (100vw - 320px) / 1600);
     color: #000;
-}
-
-.card__main-title span {
-    display: inline-block;
-    width: 100%;
-    text-indent: 0;
-    animation: marquee 10s linear infinite;
 }
 
 .card__main-title span:hover {

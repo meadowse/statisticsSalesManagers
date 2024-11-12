@@ -1,5 +1,6 @@
 .section__sales-plan {
-    column-gap: 2.5rem;
+    /* column-gap: 2.5rem; */
+    position: relative;
 }
 
 .section__sales-plan-inner {
@@ -271,9 +272,13 @@ tr {
 /* Боковая панель */
 
 .side-panel {
+    padding: 0 2.5rem;
     max-width: 470px;
     width: 100%;
-    padding: 0 2.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
     background-color: #fbfbfb;
 }
 
@@ -287,9 +292,7 @@ tr {
     width: 100%;
     height: 100%;
     position: relative;
-    /* overflow-x: hidden; */
     overflow-y: scroll;
-    /* scrollbar-width: none; */
 }
 
 /* .side-panel__list-wrapper::-webkit-scrollbar {
@@ -301,8 +304,6 @@ tr {
     display: flex;
     flex-direction: column;
     row-gap: 1.25rem;
-    position: absolute;
-    inset: 0;
     font-size: calc(12px + 8 * (100vw - 320px) / 1600);
 }
 
@@ -317,6 +318,13 @@ tr {
     /* overflow-x: hidden; */
 }
 
+.section__sales-plan-btn-show-panel {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
 /* .side-panel__list-item span {
     display: inline-block;
     width: 100%;
@@ -325,11 +333,11 @@ tr {
 }
 */
 
-@keyframes marquee {
+/* @keyframes marquee {
     0% {
         transform: translateX(100%);
     }
     100% {
         transform: translateX(-300%);
     }
-}
+} */

@@ -401,10 +401,10 @@ export default function SalesPlanPage() {
         REQUESTS_MAP.get_other_data(pathOther);
     }, [localStorage.getItem('date')]);
 
-    useEffect(() => {
-        const pathProjManagers = `http://10.199.2.144:8000/successManagers/projectManagers`;
-        REQUESTS_MAP.get_incoming_data(pathProjManagers);
-    }, []);
+    // useEffect(() => {
+    //     const pathProjManagers = `http://10.199.2.144:8000/successManagers/projectManagers`;
+    //     REQUESTS_MAP.get_incoming_data(pathProjManagers);
+    // }, []);
 
     return (
         <section className="section__sales-plan section">
@@ -412,7 +412,10 @@ export default function SalesPlanPage() {
                 <Header date={date} setDate={setDate} setSales={setSales} />
                 <SalesPlan sales={sales} otherData={otherData} />
             </div>
-            <SidePanel data={incoming} />
+            {/* <button className="section__sales-plan-btn-show-panel">
+                <img src="./img/arrow.svg" alt="" />
+            </button> */}
+            {/* <SidePanel data={incoming} /> */}
         </section>
     );
 }

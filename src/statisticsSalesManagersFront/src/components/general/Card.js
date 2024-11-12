@@ -29,7 +29,8 @@ export default function Card({ cardData }) {
             style={{ border: `1px solid ${cardData?.time_val ? getPriorityTask(dateDiff) : '#d9d9d9'}` }}
         >
             <h2 className="card__main-title">
-                {cardData?.adress ? <span>{cardData?.adress}</span> : String.fromCharCode(8212)}
+                {cardData?.adress ? cardData?.adress : String.fromCharCode(8212)}
+                {/* {cardData?.adress ? <span>{cardData?.adress}</span> : String.fromCharCode(8212)} */}
             </h2>
             <ul className="card__list">
                 {cardData?.info && cardData?.info.length !== 0

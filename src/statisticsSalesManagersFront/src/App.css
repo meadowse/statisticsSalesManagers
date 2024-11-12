@@ -16,3 +16,37 @@
     min-height: 100vh;
     display: flex;
 }
+
+.app__actions {
+    position: relative;
+}
+
+.app__btn-actions {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #d9d9d9;
+}
+
+.app__list-actions {
+    padding: 0.625rem 1.25rem 0.625rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.625rem;
+    position: absolute;
+    left: 1.25rem;
+    bottom: 5.25rem;
+    background-color: #d9d9d9;
+    z-index: 10;
+}
+
+.app__list-actions-item {
+    width: max-content;
+    cursor: pointer;
+}

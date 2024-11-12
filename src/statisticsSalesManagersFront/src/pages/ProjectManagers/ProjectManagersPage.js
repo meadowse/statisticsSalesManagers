@@ -81,7 +81,7 @@ export default function ProjectManagersPage() {
                                         <span className="kanban__column-header-rest">
                                             {numberWithSpaces(task?.rest)}&nbsp;&#8381;
                                         </span>
-                                        /<span>{task?.count}</span>
+                                        <span className="kanban__column-header-count">{task?.count}</span>
                                     </p>
                                 </div>
                             </div>
