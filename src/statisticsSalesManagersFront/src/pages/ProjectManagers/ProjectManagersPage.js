@@ -56,7 +56,7 @@ export default function ProjectManagersPage() {
 
     useEffect(() => {
         async function fetchData() {
-            const pathProjManagers = `${window.location.host}/successManagers/projectManagers`;
+            const pathProjManagers = `/successManagers/projectManagers`;
             await dataLoader(pathProjManagers).then(response => {
                 setTasks(convertData(Array.from(response)));
             });

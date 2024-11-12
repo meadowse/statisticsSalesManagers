@@ -369,8 +369,8 @@ export default function SalesPlanPage() {
             const month = newDate.getMonth() + 1;
             const year = newDate.getFullYear();
 
-            const pathSales = `${window.location.host}/successManagers?month=${month}&year=${year}`;
-            const pathOther = `${window.location.host}/successManagers/other?month=${month}&year=${year}`;
+            const pathSales = `/successManagers?month=${month}&year=${year}`;
+            const pathOther = `/successManagers/other?month=${month}&year=${year}`;
 
             console.log(`in interval path: ${pathSales}`);
 
@@ -392,8 +392,8 @@ export default function SalesPlanPage() {
         const month = newDate.getMonth() + 1;
         const year = newDate.getFullYear();
 
-        const pathSales = `${window.location.host}/successManagers?month=${month}&year=${year}`;
-        const pathOther = `${window.location.host}/successManagers/other?month=${month}&year=${year}`;
+        const pathSales = `/successManagers?month=${month}&year=${year}`;
+        const pathOther = `/successManagers/other?month=${month}&year=${year}`;
 
         // console.log(`path: ${path}`);
 

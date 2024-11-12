@@ -26,7 +26,7 @@ from .DJANGO_SECRET_KEY import SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['statisticssalesmanagersback', '10.199.254.28', '127.0.0.1', ]
+ALLOWED_HOSTS = ['statisticssalesmanagersback', ]
 
 
 # Application definition
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashBoard.apps.DashboardConfig',
     'getKNData.apps.GetkndataConfig',
-    'corsheaders',
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'statisticsSalesManagersBack.urls'
@@ -132,11 +132,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 # CORS SETTINGS
-CORS_ALLOW_ALL_ORIGINS = False  # Разрешить все источники или нет
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost',    # Добавьте разрешенные источники
-    'http://10.199.1.11',
-    'http://10.199.254.28',
-    'http://10.199.254.28:8000',
-    'http://192.168.199.208',
-]
+# CORS_ALLOW_ALL_ORIGINS = False  # Разрешить все источники или нет
+# CORS_ALLOWED_ORIGINS = [
+#     'http://localhost',    # Добавьте разрешенные источники
+#     'http://10.199.1.11',
+#     'http://10.199.254.28',
+#     'http://10.199.254.28:8000',
+#     'http://192.168.199.208',
+#     'http://10.199.2.118:3000',
+# ]
