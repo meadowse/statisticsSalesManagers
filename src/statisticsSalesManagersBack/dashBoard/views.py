@@ -85,8 +85,8 @@ def projectManagers(request):
         LEFT JOIN T205 ON T212.F4540 = T205.ID -- Контрагент
         LEFT JOIN T3 ON T212.F4950 = T3.ID -- ПрМ
         LEFT JOIN T3 AS T3_2 ON T212.F4546 = T3_2.ID -- Рук отдела
-        LEFT JOIN T233 ON T212.ID = T233.F4963  -- Соединяем T212 с T233 по ID договора
-        LEFT JOIN T206 ON T233.F4870 = T206.ID  -- Соединяем T233 с T206 по ID контакта
+        -- LEFT JOIN T233 ON T212.ID = T233.F4963  -- Соединяем T212 с T233 по ID договора
+        -- LEFT JOIN T206 ON T233.F4870 = T206.ID  -- Соединяем T233 с T206 по ID контакта
         WHERE T212.F4544 <> 'Аннулировано' AND T212.F4544 <> 'Успех' AND T212.F4544 <> 'Отменена'
         """  # F4648 - путь, F4538 - номер договора, F4544 - стадия, F4946 - адрес, F4948 - направление, F4566 - дата окончания
         cur.execute(sql)
