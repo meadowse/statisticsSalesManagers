@@ -24,9 +24,9 @@ from .DJANGO_SECRET_KEY import SECRET_KEY
 
 # Debug оставляю, т.к. приложение будет работать внутри корпоративной сети
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['statisticssalesmanagersback', ]
+ALLOWED_HOSTS = ['statisticssalesmanagersback', '127.0.0.1']
 
 
 # Application definition
@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dashBoard.apps.DashboardConfig',
-    'getKNData.apps.GetkndataConfig',
+    'api.apps.ApiConfig',
     # 'corsheaders',
 ]
 
