@@ -24,7 +24,7 @@ from .DJANGO_SECRET_KEY import SECRET_KEY
 
 # Debug оставляю, т.к. приложение будет работать внутри корпоративной сети
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['statisticssalesmanagersback', '127.0.0.1']
 
