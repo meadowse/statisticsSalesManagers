@@ -196,6 +196,9 @@ function SalesPlan({ sales, otherData }) {
         },
         getByOther: data => {
             return SalesService.getCurrTotalSales(data);
+        },
+        getSum: (managers, other) => {
+            return SalesService.getCurrTotalSales(managers) + SalesService.getCurrTotalSales(other);
         }
     };
 
@@ -205,6 +208,9 @@ function SalesPlan({ sales, otherData }) {
         },
         getByOther: data => {
             return SalesService.getTotalSales(data);
+        },
+        getSum: (managers, other) => {
+            return SalesService.getTotalSales(managers) + SalesService.getTotalSales(other);
         }
     };
 
@@ -218,6 +224,11 @@ function SalesPlan({ sales, otherData }) {
             const currTotalSales = CURR_TOTAL_SALES_MAP.getByManagers(data);
             const totalSales = TOTAL_SALES_MAP.getByManagers(data);
             return SalesService.getCurrTotalSalesAsPercentage(currTotalSales, totalSales);
+        },
+        getSum: (managers, other) => {
+            const currSumTotalSales = CURR_TOTAL_SALES_MAP.getSum(managers, other);
+            const sumTotalSales = TOTAL_SALES_MAP.getSum(managers, other);
+            return SalesService.getCurrTotalSalesAsPercentage(currSumTotalSales, sumTotalSales);
         }
     };
 
@@ -229,6 +240,10 @@ function SalesPlan({ sales, otherData }) {
         getByOther: data => {
             const totalSalesAsPer = TOTAL_SALES_AS_PER_MAP.getByManagers(data);
             return { backgroundColor: '#666666', gridColumn: `1/${totalSalesAsPer} span` };
+        },
+        getSum: (managers, other) => {
+            const sumTotalSalesAsPer = TOTAL_SALES_AS_PER_MAP.getSum(managers, other);
+            return { backgroundColor: '#666666', gridColumn: `1/${sumTotalSalesAsPer} span` };
         }
     };
 
@@ -241,11 +256,20 @@ function SalesPlan({ sales, otherData }) {
                             <th align="left" className="total_title">
                                 Общая сумма
                             </th>
-                            <th>
-                                Сумма Отдел продаж + Руководство и ПрМ
+                            <th className="curr_total_cell">
+                                <th className="curr_total_sales">
+                                    {/* {numberWithSpaces(currTotalSales)}&nbsp;&#8381; */}
+                                    {/* {numberWithSpaces(CURR_TOTAL_SALES_MAP.getByManagers(sales))}&nbsp;&#8381; */}
+                                    {numberWithSpaces(CURR_TOTAL_SALES_MAP.getSum(sales, otherData))}&nbsp;&#8381;
+                                </th>
+                                <th className="curr_total_progress">
+                                    <th style={STYLES_GENERAL_SALES_MAP.getSum(sales, otherData)}>&shy;</th>
+                                    <th className={classNames('separator', '_50')}></th>
+                                    <th className={classNames('separator', '_90')}></th>
+                                </th>
                             </th>
-                            <th>
-                                &nbsp;
+                            <th className="total_sales">
+                                {numberWithSpaces(TOTAL_SALES_MAP.getSum(sales, otherData))}&nbsp;&#8381;
                             </th>
                         </tr>
                         <tr>
