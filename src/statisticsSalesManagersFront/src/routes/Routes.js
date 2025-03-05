@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom';
+
 // Импорт компонентов
 import App from '../App';
 import ProjectManagersPage from '../pages/ProjectManagers/ProjectManagersPage';
@@ -8,6 +10,10 @@ const ROUTES = [
         path: '/',
         element: <App />,
         children: [
+            {
+                index: true,
+                element: <Navigate to="/sales_plan/" replace />
+            },
             {
                 path: 'sales_plan',
                 element: <SalesPlanPage />
