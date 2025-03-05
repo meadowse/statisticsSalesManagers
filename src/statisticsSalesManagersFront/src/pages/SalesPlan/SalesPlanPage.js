@@ -76,7 +76,7 @@ function Header({ date, setDate }) {
                     <span>комплекс</span>
                 </h2>
             </a>
-            <h1 className="section__sales-plan-title">План продаж</h1>
+            <h1 className="section__sales-plan-title">{`Продажи (БЕЗ НДС)`}</h1>
             <div className="section__sales-plan-date">
                 <button className="btn__select-date" onClick={onOpenCalendar}>
                     <p>
@@ -239,7 +239,18 @@ function SalesPlan({ sales, otherData }) {
                     <thead className="sales_thead">
                         <tr>
                             <th align="left" className="total_title">
-                                Общий
+                                Общая сумма
+                            </th>
+                            <th>
+                                Сумма Отдел продаж + Руководство и ПрМ
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
+                        </tr>
+                        <tr>
+                            <th align="left" className="total_title">
+                                Отдел продаж
                             </th>
                             <th className="curr_total_cell">
                                 <th className="curr_total_sales">
@@ -264,7 +275,7 @@ function SalesPlan({ sales, otherData }) {
                         <tr className="hr_line"></tr>
                         <tr>
                             <th align="left" className="total_title">
-                                Общий
+                                Руководство и ПрМ
                             </th>
                             <th className="curr_total_cell">
                                 <th className="curr_total_sales">
