@@ -15,7 +15,8 @@ import TASKS_DATA from '@data/managers-projects.json';
 
 function convertData(data) {
     const tasks = [],
-        managers = Array.from(new Set(TASKS_DATA.map(item => item?.PRM)));
+        managers = Array.from(new Set(data.map(item => item?.PRM))).sort();
+
 
     managers.map(manager => {
         tasks.push({
