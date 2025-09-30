@@ -40,7 +40,7 @@ export default function Card({ cardData }) {
             <div className="card__bottom">
                 <h3 className="card__bottom-title">
                     {cardData?.price ? (
-                        <span className="card__bottom-price">{numberWithSpaces(cardData?.price)}&nbsp;&#8381;</span>
+                        <span className="card__bottom-price">{numberWithSpaces(Math.ceil(cardData?.price))}&nbsp;&#8381;</span>
                     ) : (
                         String.fromCharCode(8212)
                     )}
