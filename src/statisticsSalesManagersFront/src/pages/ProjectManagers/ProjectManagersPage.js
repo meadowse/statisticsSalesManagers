@@ -76,11 +76,11 @@ export default function ProjectManagersPage() {
                                     <h2 className="kanban__column-header-title">{task?.manager}</h2>
                                     <p className="kanban__column-header-subtitle">
                                         <span className="kanban__column-header-price">
-                                            {numberWithSpaces(task?.price)}&nbsp;&#8381;
+                                            {numberWithSpaces(Math.ceil(task?.price))}&nbsp;&#8381;
                                         </span>
                                         /
                                         <span className="kanban__column-header-rest">
-                                            {numberWithSpaces(task?.rest)}&nbsp;&#8381;
+                                            {numberWithSpaces(Math.ceil(task?.rest))}&nbsp;&#8381;
                                         </span>
                                         <span className="kanban__column-header-count">{task?.count}</span>
                                     </p>
