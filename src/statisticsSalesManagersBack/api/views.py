@@ -143,7 +143,7 @@ def successManagers(request):
             AND EXTRACT(MONTH FROM T337.F6010) = {month} AND EXTRACT(YEAR FROM T337.F6010) = {year}"""
             cur.execute(sql)
             result = cur.fetchone()[0]
-            if result != 0:
+            if result != 0 and result is not None:
                 result = result + manager.get('total_payments')
                 manager.update({'total_payments': result})
                 manager.update({'notClear': True})
