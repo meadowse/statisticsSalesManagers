@@ -125,7 +125,7 @@ def successManagers(request):
     with firebirdsql.connect(host=host, database=database, user=user, password=password, charset=charset) as con:
         cur = con.cursor()
         sql = f"""SELECT T3.F4886 AS manager_name,
-        T3.ID, COALESCE(ROUND(SUM(T245.F5708), 0), 0) AS total_payments,
+        COALESCE(ROUND(SUM(T245.F5708), 0), 0) AS total_payments,
         T3.ID
         FROM T3
         LEFT JOIN T212 ON T3.ID = T212.F4844
