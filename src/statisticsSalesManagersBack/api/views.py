@@ -154,17 +154,26 @@ def successOther(request):
     year = request.GET.get('year')
     with firebirdsql.connect(host=host, database=database, user=user, password=password, charset=charset) as con:
         cur = con.cursor()
-        sql = f"""SELECT T3.F4886 AS manager_name, ROUND(SUM(T245.F5708),0) AS total_payments
+        sql = f"""SELECT T3.F4886 AS manager_name, ROUND(SUM(T245.F5708),0) AS total_payments, T3.ID
         FROM T245
         JOIN T213 ON T245.F4956 = T213.ID
         JOIN T212 ON T213.F4573 = T212.ID
         JOIN T3 ON T212.F4844 = T3.ID
         WHERE EXTRACT(MONTH FROM T245.F4952) = {month} AND EXTRACT(YEAR FROM T245.F4952) = {year} AND T3.F27 <> 3
-        GROUP BY T3.F4886"""
+        GROUP BY T3.F4886, T3.ID"""
         cur.execute(sql)
         result = cur.fetchall()
         # Преобразование результата в список словарей
-        result_list = [{'manager_name': row[0], 'total_payments': row[1]} for row in result]
+        result_list = [{'manager_name': row[0], 'total_payments': row[1], 'id': row[2]} for row in result]
+        for manager in result_list:
+            sql = f"""SELECT SUM(T337.F6011) FROM T337 WHERE T337.F6012 = {manager.get('id')}
+            AND EXTRACT(MONTH FROM T337.F6010) = {month} AND EXTRACT(YEAR FROM T337.F6010) = {year}"""
+            cur.execute(sql)
+            result = cur.fetchone()[0]
+            if result != 0 and result is not None:
+                result = result + manager.get('total_payments')
+                manager.update({'total_payments': result})
+                manager.update({'notClear': True})
         return JsonResponse(result_list, safe=False, json_dumps_params={'ensure_ascii': False, 'indent': 4})
 
 def serialize_value(value):
